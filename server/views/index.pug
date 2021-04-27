@@ -1,0 +1,22 @@
+extends layout
+
+block layout-content
+  div.View
+    h1.Banner My first blog
+    div.createPost
+      h2 Create Post
+      p
+      form(action='/createPost' method='POST')
+        input(type='text' placeholder='Title' name='title')
+        p
+        input(type='text' placeholder='Content' name='content')
+        p
+        button(type='submit') Submit
+    div.scrollPosts
+      h2 List of posts
+      ul
+        each post in blogPosts
+          div.post
+            p #{post.title}
+            p #{post.content}
+            p #{post.author}
