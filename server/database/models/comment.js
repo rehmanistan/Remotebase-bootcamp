@@ -1,11 +1,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// TBD: Add validation
+
 // Define comment model
 const commentSchema = new Schema({
-  content: String,
-  author: String,
-  dateCreated: Date
+  content: {
+    type: String,
+    required: true
+  },
+  author: {
+    type: Schema.ObjectId, ref: 'user'
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 // Create the model class

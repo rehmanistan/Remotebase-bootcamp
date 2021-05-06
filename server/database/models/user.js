@@ -1,12 +1,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// TBD: Add validation
+
 // Define user model
 const userSchema = new Schema({
-  username: String,
-  email: String,
-  password: String,
-  dateCreated: Date
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 // Create the model class
