@@ -5,44 +5,45 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import PostScroll from "../components/postScroll";
 
 class Landing extends Component {
-  state = {
-    posts: [],
-    b: "a",
-  };
+  constructor(props) {
+    super(props);
 
-  // componentDidMount() {
-  //   axios.get("/").then((res) => this.setState({ posts: res.json }));
-  // }
+    this.state = {
+      posts: [],
+    };
+  }
 
   componentDidMount() {
     axios
       .get("http://localhost:5000")
-      .then(function (response) {
-        //handle success
-        console.log(response.data);
-        console.log("1");
-      })
-      .catch(function (error) {
-        //handle error
-        console.log(error);
-        console.log("1.5");
-      })
-      .then(function () {
-        //always executed
-        console.log("2");
-      });
+      .then((res) => this.setState({ posts: res.data }));
   }
 
   render() {
-    console.log("rendering");
-    console.log("this.setstate.posts", this.state.posts);
-    console.log("test", this.state.b);
     const { posts } = this.state;
+    console.log("testing local storage");
+    console.log(localStorage);
+    console.log(JSON.parse(localStorage.getItem("user")));
+    console.log(JSON.parse(localStorage.getItem("user")).result.email);
+    console.log(JSON.parse(localStorage.getItem("user")).result.password);
+    console.log(JSON.parse(localStorage.getItem("user")).token);
+    console.log("done testing local storage");
+
+    const fetchedPosts = posts.map((post) => (
+      <PostScroll
+        key={post.id}
+        title={post.title}
+        content={post.content}
+        author={post.author}
+        dateCreated={post.dateCreated}
+      />
+    ));
+
     return (
       <div className="d-flex flex-column min-vh-100">
         <Navbar bg="transparent" expand="md" className="py-3 my-md-2">
           <Container fluid="xl" className="app__container">
-            <Navbar.Brand href="#home">Log2o</Navbar.Brand>
+            <Navbar.Brand href="/">Logo</Navbar.Brand>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
               className="border-0 p-0"
@@ -50,12 +51,12 @@ class Landing extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto d-flex flex-column flex-sm-row justify-content-sm-between mt-3 mt-md-0">
                 <Nav.Link
-                  href="#home"
+                  href="/signIn"
                   className="app__btn mb-3 mb-sm-0 mr-sm-3"
                 >
                   Sign In
                 </Nav.Link>
-                <Nav.Link href="#link" className="app__btn">
+                <Nav.Link href="signUp" className="app__btn">
                   Sign Up
                 </Nav.Link>
               </Nav>
@@ -73,10 +74,7 @@ class Landing extends Component {
               </div>
             </div>
             <div className="stories__content app__container-md py-5 my-2 mt-md-4 mb-md-5">
-              <PostScroll />
-              <PostScroll />
-              <PostScroll />
-              <PostScroll />
+              {fetchedPosts}
             </div>
           </Container>
         </div>

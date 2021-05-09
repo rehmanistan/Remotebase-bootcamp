@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import {
-  Navbar,
-  Nav,
-  Container,
-  Form,
-  Button,
-
-} from "react-bootstrap";
-
+import { Navbar, Nav, Container, Form, Button } from "react-bootstrap";
 
 function App() {
-
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar bg="transparent" expand="md" className="py-3 my-md-2">
@@ -21,9 +12,7 @@ function App() {
       <div className="off-canvas flex-grow-1">
         <Container fluid="xl" className="app__container">
           <div className="app__container-sm py-5 my-2 my-md-5">
-            <h1 className="main__heading text-center mb-4">
-              Sign Up
-            </h1>
+            <h1 className="main__heading text-center mb-4">Sign Up</h1>
             <Form className="pt-4">
               <Form.Group className="form__field">
                 <Form.Control type="text" placeholder="First Name" />
@@ -42,7 +31,10 @@ function App() {
                   Sign Up
                 </Button>
                 <p className="md__para mt-3 mb-0">
-                  Already have an account? <a href="#" className="app__link">Sign In</a>
+                  Already have an account?{" "}
+                  <a href="signIn" className="app__link">
+                    Sign In
+                  </a>
                 </p>
               </div>
             </Form>
