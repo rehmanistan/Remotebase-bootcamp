@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import LoginForm from "../components/Form/form";
+import LoginForm from "../components/Form/loginForm";
 
 class signIn extends Component {
   constructor(props) {

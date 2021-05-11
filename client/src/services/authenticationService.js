@@ -19,7 +19,16 @@ class AuthenticationService {
   };
 
   signUp = async (email, password) => {
-    return axios.post("http://localhost:5000/signUp", { email, password });
+    return axios
+      .post("http://localhost:5000/signUp", { email, password })
+      .then((response) => {
+        console.log("1");
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log("2");
+        throw err;
+      });
   };
 
   signOut() {

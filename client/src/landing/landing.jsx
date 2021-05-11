@@ -21,13 +21,6 @@ class Landing extends Component {
 
   render() {
     const { posts } = this.state;
-    console.log("testing local storage");
-    console.log(localStorage);
-    console.log(JSON.parse(localStorage.getItem("user")));
-    console.log(JSON.parse(localStorage.getItem("user")).result.email);
-    console.log(JSON.parse(localStorage.getItem("user")).result.password);
-    console.log(JSON.parse(localStorage.getItem("user")).token);
-    console.log("done testing local storage");
 
     const fetchedPosts = posts.map((post) => (
       <PostScroll
