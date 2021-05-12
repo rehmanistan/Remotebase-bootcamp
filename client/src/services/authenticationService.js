@@ -14,6 +14,7 @@ class AuthenticationService {
         return response.data;
       })
       .catch((err) => {
+        console.log("f");
         throw err;
       });
   };
@@ -24,6 +25,11 @@ class AuthenticationService {
       .then((response) => {
         console.log("1");
         console.log(response);
+
+        if (response.data.token) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+        return response.data;
       })
       .catch((err) => {
         console.log("2");

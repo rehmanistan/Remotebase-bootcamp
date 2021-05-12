@@ -12,20 +12,20 @@ class LoginForm extends Component {
       password: "",
       error: "",
     };
-
-    // why are these needed?
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    AuthenticationService.signIn(this.state.email, this.state.password).then(
+    const { email, password } = this.state;
+
+    AuthenticationService.signIn(email, password).then(
       () => {
         console.log("redirecting");
         this.props.history.push("/");
