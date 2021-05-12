@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
-import PostScroll from "../components/postScroll";
+import PostList from "../components/PostList";
 
 import AuthService from "../services/authenticationService";
 import PostService from "../services/postService";
@@ -16,12 +16,29 @@ class Landing extends Component {
     this.state = {
       currentUser: undefined,
       posts: [],
+      loading: true,
     };
 
     this.signout = this.signOut.bind(this);
   }
 
   componentDidMount() {
+    PostService.getPosts().then(
+      (response) => {
+        console.log("l");
+        this.setState({
+          posts: response,
+          loading: false,
+        });
+        console.log("b");
+        console.log("load2", this.state.loading);
+      },
+      (error) => {
+        console.log(error);
+        console.log("a");
+      }
+    );
+
     const allPosts = PostService.getPosts();
     if (allPosts) {
       this.setState({
@@ -39,16 +56,23 @@ class Landing extends Component {
 
   signOut() {
     AuthService.signOut();
+    this.setState({ currentUser: null });
   }
 
   render() {
-    const { currentUser, posts } = this.state;
-    console.log("3");
-    console.log(this.state);
-    console.log("5");
-    console.log(posts);
+    console.log("!!!!!!!!!! RE- RENDERING !!!!!!!!!!!!");
+    const { loading, currentUser, posts } = this.state;
+    console.log("this.state=", this.state);
+    console.log("posts=", posts);
+    console.log("load=", loading);
 
-    // const fetchedPosts = posts.map((post) => (
+    // if (!posts) {
+    //   return <div>Loading...</div>;
+    // }
+
+    // let fetchedPosts;
+
+    // fetchedPosts = posts.map((post) => (
     //   <PostScroll
     //     key={post.id}
     //     title={post.title}
@@ -124,7 +148,7 @@ class Landing extends Component {
               </div>
             </div>
             <div className="stories__content app__container-md py-5 my-2 mt-md-4 mb-md-5">
-              {"testing"}
+              {loading ? "loading" : <PostList posts={posts} />}
             </div>
           </Container>
         </div>

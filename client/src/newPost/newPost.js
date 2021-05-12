@@ -35,20 +35,7 @@ function App() {
               </a>
               <span className="stories__date">/ 3/24/21, 1:40 PM</span>
             </div>
-            <div className="detail__img my-4 d-inline-block w-100">
-              <img
-                src="/images/stories-img.png"
-                alt="Img"
-                className="w-100 h-100"
-              />
-            </div>
-            <p className="md__para text-center text-md-left">
-              a tak joooo a tak joooo a tak joooo a tak joooo a tak joooo a tak
-              joooo a tak joooo a tak joooo a tak joooo a tak joooo a tak joooo
-              a tak joooo a tak joooo a tak joooo tak joooo a tak joooo a tak
-              joooo a tak joooo tak joooo a tak joooo a tak joooo tak joooo a
-              tak joooo a tak joooo
-            </p>
+            <p className="md__para text-center text-md-left">Lorem Ipsum</p>
           </div>
         </Container>
       </div>

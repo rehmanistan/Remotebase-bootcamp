@@ -5,7 +5,7 @@ class postService {
     return axios
       .get("http://localhost:5000")
       .then((response) => {
-        console.log("2");
+        console.log("SERVER RETURNING POSTS");
         console.log(response);
         return response.data;
       })
