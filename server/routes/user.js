@@ -1,16 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = new express.Router();
 
 const User = require("../database/models/user");
-const {signUp, signIn} = require("../controllers/user.js");
+const { signUp, signIn } = require("../controllers/user.js");
 
-router.post('/signIn', signIn);
-router.post('/signUp', signUp);
+router.post("/signIn", signIn);
+router.post("/signUp", signUp);
 // router.post('/signOut', signOut);
 // router.get('/user/:id', getUser);
 
 module.exports = router;
-
 
 // test user
 // {
@@ -23,5 +22,3 @@ module.exports = router;
 //     },
 //     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RFbWFpbDEiLCJpZCI6IjYwOGFlODAwMzA5MjQ4MGRiYmQwYzUwNiIsImlhdCI6MTYxOTcxNjA5NiwiZXhwIjoxNjE5NzE5Njk2fQ.Bkec0s1bBA4szEjGcFzo7HJ0XbaUXqKa9pRvy6caEWk"
 // }
-
-

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // TBD: Add validation
@@ -7,24 +7,25 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   content: {
     type: String,
-    required: true
+    required: true,
   },
   // author: {type: Schema.ObjectId, ref: 'user'},
   author: {
-    type: Schema.ObjectId, ref: 'user'
+    type: Schema.ObjectId,
+    ref: "user",
   },
   dateCreated: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // Create the model class
-const ModelClass = mongoose.model('post', postSchema);
+const ModelClass = mongoose.model("post", postSchema);
 
 // Export the model
-module.exports = ModelClass
+module.exports = ModelClass;

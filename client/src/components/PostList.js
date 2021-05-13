@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PostList = (props) => {
-  const pages = props.posts;
+  const posts = props.posts;
 
   return (
     <>
-      {pages.map((item, index) => {
+      {posts.map((item, index) => {
         const { title, content, author, dateCreated } = item;
 
         return (

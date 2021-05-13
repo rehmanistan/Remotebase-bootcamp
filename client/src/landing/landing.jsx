@@ -25,17 +25,13 @@ class Landing extends Component {
   componentDidMount() {
     PostService.getPosts().then(
       (response) => {
-        console.log("l");
         this.setState({
           posts: response,
           loading: false,
         });
-        console.log("b");
-        console.log("load2", this.state.loading);
       },
       (error) => {
         console.log(error);
-        console.log("a");
       }
     );
 
@@ -60,11 +56,7 @@ class Landing extends Component {
   }
 
   render() {
-    console.log("!!!!!!!!!! RE- RENDERING !!!!!!!!!!!!");
     const { loading, currentUser, posts } = this.state;
-    console.log("this.state=", this.state);
-    console.log("posts=", posts);
-    console.log("load=", loading);
 
     // if (!posts) {
     //   return <div>Loading...</div>;
@@ -87,7 +79,7 @@ class Landing extends Component {
         {currentUser ? (
           <Navbar bg="transparent" expand="md" className="py-3 my-md-2">
             <Container fluid="xl" className="app__container">
-              <Navbar.Brand href="/">Logo</Navbar.Brand>
+              <Navbar.Brand href="/">Home</Navbar.Brand>
               <Navbar.Toggle
                 aria-controls="basic-navbar-nav"
                 className="border-0 p-0"
@@ -128,7 +120,7 @@ class Landing extends Component {
                   >
                     Sign In
                   </Nav.Link>
-                  <Nav.Link href="/" className="app__btn">
+                  <Nav.Link href="/signup" className="app__btn">
                     Sign Up
                   </Nav.Link>
                 </Nav>
@@ -148,7 +140,7 @@ class Landing extends Component {
               </div>
             </div>
             <div className="stories__content app__container-md py-5 my-2 mt-md-4 mb-md-5">
-              {loading ? "loading" : <PostList posts={posts} />}
+              {loading ? "loading2" : <PostList posts={posts} />}
             </div>
           </Container>
         </div>

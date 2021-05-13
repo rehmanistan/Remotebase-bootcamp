@@ -32,11 +32,11 @@ const getPost = async (req, res) => {
 
 // create a new post & store in Mongo
 const createPost = async (req, res) => {
-  const { title, content, userId } = req.body;
+  const { title, content, author } = req.body;
   const newPost = new Post({
     title,
     content,
-    author: userId,
+    author,
   });
 
   try {

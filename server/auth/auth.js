@@ -1,13 +1,14 @@
-const jwt = require('jsonwebtoken');
-const PRIV_KEY = require('./key').secretOrKey;
+const jwt = require("jsonwebtoken");
+const PRIV_KEY = require("./key").secretOrKey;
 
 const auth = async (req, res, next) => {
-  const header = req.headers.authorization
+  const header = req.headers.authorization;
+  console.log("AUTH MIDDLEWARE");
   if (!header) {
-    res.status(500).send({message: 'Not authorized'});
+    res.status(500).send({ message: "blah bslh Not authorized" });
   } else {
     try {
-      const token = await header.split(' ')[1];
+      const token = await header.split(" ")[1];
       let decodedData = jwt.verify(token, PRIV_KEY);
       req.body.userId = decodedData?.id;
       next();

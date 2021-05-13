@@ -5,14 +5,26 @@ class postService {
     return axios
       .get("http://localhost:5000")
       .then((response) => {
-        console.log("SERVER RETURNING POSTS");
-        console.log(response);
         return response.data;
       })
       .catch((err) => {
         throw err;
       });
   }
+
+  createPost = async (title, content, author) => {
+    return axios
+      .post("http://localhost:5000/createPost", { title, content, author })
+      .then((res) => {
+        console.log("SERVER CREATED POST");
+        console.log(res);
+        return res.data;
+      })
+      .catch((err) => {
+        console.log("createPost error");
+        throw err;
+      });
+  };
 }
 
 export default new postService();
