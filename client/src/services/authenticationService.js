@@ -7,10 +7,7 @@ class AuthenticationService {
       .then((response) => {
         if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
-          console.log(localStorage);
         }
-        console.log("2");
-        console.log(response);
         return response.data;
       })
       .catch((err) => {
@@ -22,11 +19,12 @@ class AuthenticationService {
     return axios
       .post("http://localhost:5000/signUp", { email, password })
       .then((response) => {
-        console.log("1");
-        console.log(response);
+        if (response.data.token) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+        return response.data;
       })
       .catch((err) => {
-        console.log("2");
         throw err;
       });
   };

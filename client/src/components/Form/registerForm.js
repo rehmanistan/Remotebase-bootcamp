@@ -14,14 +14,12 @@ class RegisterForm extends Component {
       password: "",
       error: "",
     };
-
-    // why are these needed?
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   handleSubmit = async (e) => {
